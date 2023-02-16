@@ -1,10 +1,12 @@
 (ql:quickload :lisp-unit)
+(in-package :lisp-unit)
+(format t "---------------------~%~a~%---------------------~%" *package*)
 
-(lisp-unit:define-test dummy
-    (lisp-unit:assert-equal 4 (+ 2 2)))
+(setq *print-failures* t)
+(define-test dummy
+    (assert-equal 4 (+ 2 2)))
 
-(setq lisp-unit:*print-failures* t)
-(lisp-unit:run-tests :all)
-(exit)
+(run-tests :all)
+(sb-ext:quit)
 
 
