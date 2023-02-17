@@ -2,4 +2,6 @@
 (:export :solve))
 
 (defun solve (expression result)
-  (list 2 3))
+  (let ((tens (floor expression 10))
+        (units (rem expression 10)))
+  (list tens units)))
