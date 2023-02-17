@@ -1,10 +1,11 @@
 (ql:quickload :lisp-unit)
 (in-package :lisp-unit)
-(format t "---------------------~%~a~%---------------------~%" *package*)
-
 (setq *print-failures* t)
-(define-test dummy
-    (assert-equal 4 (+ 2 2)))
+(load "confusion-solve")
+
+(define-test trivial-sum
+    (assert-equal (list 2 3) (solve 23 5)))
+
 
 (run-tests :all)
 (sb-ext:quit)
