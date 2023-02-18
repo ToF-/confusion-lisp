@@ -22,6 +22,8 @@
 (define-test deal-breaker
    (assert-equal nil (solve 7 2)))
 
+(define-test mixed-term-sum
+   (assert-equal (list 23 45 678 9) (solve 23456789 (+ 23 45 678 9))))
 
 (run-tests :all)
 (sb-ext:quit)
