@@ -6,5 +6,5 @@
       (let* ((tens (floor expression 10))
              (units (rem expression 10))
              (target (- result units)))
-        (append (solve tens target)))))
+        (append (solve tens target) (list units)))))
 
