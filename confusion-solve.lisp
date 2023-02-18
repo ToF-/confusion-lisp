@@ -1,5 +1,5 @@
 (defpackage :confusion-solve
-(:export :solve :parameters :solve-line))
+(:export :solve :parameters :solve-line :process))
 
 (ql:quickload :cl-ppcre)
 
@@ -25,3 +25,12 @@
          (expression (car params))
          (result (cadr params)))
     (solve expression result)))
+
+(defun process ()
+  (let ((in (open "sample.txt")))
+    (when in
+      (loop for line = (read-line in nil)
+            while line do (format t "~a~%" (solve-line line)))
+      (close in)
+      (exit))))
+
