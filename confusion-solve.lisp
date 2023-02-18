@@ -1,10 +1,27 @@
 (defpackage :confusion-solve
 (:export :solve))
 
+(defun solver (expression result power-of-ten)
+  (if (or (< expression result) (= result 0)) nil
+      (let* ((left (floor expression power-of-ten))
+             (right (rem expression power-of-ten))
+             (target (- result right)))
+           
+        (append (solver left target 10) (list right)))))
+
 (defun solve (expression result)
-  (if (= result 0) nil
-      (let* ((tens (floor expression 10))
-             (units (rem expression 10))
-             (target (- result units)))
-        (append (solve tens target) (list units)))))
+  (solver expression result 10))
+
+
+; (solve 234 36)
+; (if (or nil nil)
+;   (let *((tens 23)
+;          (units 4)
+;          (target 32))
+;     (append (solve 23 32) (list 4))))
+; (solve 23 32)
+; (if (or t nil) nil)
+; (append nil (list 4))
+; (list 4)
+
 
