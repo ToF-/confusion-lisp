@@ -11,8 +11,8 @@
     (assert-equal (list 2 3 4) (solve 234 9))
     (assert-equal (list 4 7 8) (solve 478 19)))
 
-; (define-test two-digit-term-sum
-;    (assert-equal (list 2 34) (solve 234 36)))
+(define-test two-digit-term-sum
+   (assert-equal (list 2 34) (solve 234 36)))
 
 (run-tests :all)
 (sb-ext:quit)
