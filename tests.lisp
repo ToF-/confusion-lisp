@@ -29,6 +29,15 @@
    (assert-equal (list 8 1 1 63 4 9 801 5058 0 8 2 2 9 6 8 6 7 3 3 9 4) 
                  (solve 811634980150580822968673394 6012)))
 
+(define-test get-parameters
+    (assert-equal (list 4807 19) (parameters "4807=19"))
+    (assert-equal (list 4807 811) (parameters  "4807=811")))
+
+(define-test solve-line
+    (assert-equal (list 8 1 1 63 4 9 801 5058 0 8 2 2 9 6 8 6 7 3 3 9 4)
+                  (solve-line "811634980150580822968673394=6012")))
+
+
 (run-tests :all)
 (sb-ext:quit)
 

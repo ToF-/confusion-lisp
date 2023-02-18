@@ -1,5 +1,7 @@
 (defpackage :confusion-solve
-(:export :solve))
+(:export :solve :parameters :solve-line))
+
+(ql:quickload :cl-ppcre)
 
 (defun solver (expression result power-of-ten)
   (cond ((= expression result) (list expression))
@@ -15,3 +17,11 @@
 (defun solve (expression result)
   (solver expression result 10))
 
+(defun parameters (line)
+  (mapcar #'parse-integer (cl-ppcre:split "=" line)))
+
+(defun solve-line (line)
+  (let* ((params (parameters line))
+         (expression (car params))
+         (result (cadr params)))
+    (solve expression result)))
