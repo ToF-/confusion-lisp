@@ -19,16 +19,3 @@
 (defun solve (expression result)
   (solver expression result 10))
 
-
-; (solve 234 36)
-; (if (or nil nil)
-;   (let *((tens 23)
-;          (units 4)
-;          (target 32))
-;     (append (solve 23 32) (list 4))))
-; (solve 23 32)
-; (if (or t nil) nil)
-; (append nil (list 4))
-; (list 4)
-
-
