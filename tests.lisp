@@ -23,7 +23,9 @@
    (assert-equal nil (solve 7 2)))
 
 (define-test mixed-term-sum
-   (assert-equal (list 23 45 678 9) (solve 23456789 (+ 23 45 678 9))))
+   (assert-equal (list 23 45 678 9) (solve 23456789 (+ 23 45 678 9)))
+   (assert-equal (list 2 5074 65 9 9 3 12 7 3 5 4 5 8 7 9 9 2 4 7 1 0) (solve 25074659931273545879924710 5245))
+   (assert-equal (list 8 1 1 63 4 9 801 5058 0 8 2 2 9 6 8 6 7 3 3 9 4) (solve 811634980150580822968673394 6012)))
 
 (run-tests :all)
 (sb-ext:quit)
