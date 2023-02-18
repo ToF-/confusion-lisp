@@ -5,9 +5,11 @@
   (if (or (< expression result) (= result 0)) nil
       (let* ((left (floor expression power-of-ten))
              (right (rem expression power-of-ten))
-             (target (- result right)))
-           
-        (append (solver left target 10) (list right)))))
+             (target (- result right))
+             (candidate (append (solver left target 10) (list right))))
+        (if (= result (reduce '+ candidate))
+          candidate
+          (solver expression result (* power-of-ten 10))))))
 
 (defun solve (expression result)
   (solver expression result 10))
