@@ -15,6 +15,14 @@
    (assert-equal (list 2 34) (solve 234 36))
    (assert-equal (list 23 4) (solve 234 27)))
 
+(define-test three-digit-term-sum
+   (assert-equal (list 2 345) (solve 2345 347))
+   (assert-equal (list 234 5) (solve 2345 239)))
+
+(define-test deal-breaker
+   (assert-equal nil (solve 7 2)))
+
+
 (run-tests :all)
 (sb-ext:quit)
 
