@@ -1,7 +1,6 @@
 (defpackage :confusion-solve
-(:export :solve :parameters :print-solution :equation :print-equation :process))
+(:export :solve :split-parameters :print-solution :equation :format-equation :process))
 
-(ql:quickload :listopia)
 (ql:quickload :cl-ppcre)
 
 (defun solver (expression result power-of-ten)
@@ -18,29 +17,22 @@
 (defun solve (expression result)
   (solver expression result 10))
 
-(defun parameters (line)
+(defun split-parameters (line)
   (mapcar #'parse-integer (cl-ppcre:split "=" line)))
-
-(defun cs (&rest args)
-  (concatenate 'string args))
-
-(defun intersperse (terms)
-  (cond ((null (cdr terms)) (write-to-string terms))
-        (t (write-to-string terms))))
 
 (defun equation (terms result)
   (cond ((null (cdr terms)) (cons (car terms) (cons '= (list result))))
         (t (cons (car terms) (cons '+ (equation (cdr terms) result))))))
 
-(defun print-equation (terms result)
+(defun format-equation (terms result)
   (format nil "~{~a~}" (equation terms result)))
 
 (defun solve-line (line)
-  (let* ((params (parameters line))
+  (let* ((params (split-parameters line))
          (expression (car params))
          (result (cadr params))
          (solution (solve expression result)))
-    (print-equation solution result)))
+    (format-equation solution result)))
 
 (defun process ()
   (let ((in (open "sample.txt")))

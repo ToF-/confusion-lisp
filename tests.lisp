@@ -29,17 +29,17 @@
    (assert-equal (list 8 1 1 63 4 9 801 5058 0 8 2 2 9 6 8 6 7 3 3 9 4) 
                  (solve 811634980150580822968673394 6012)))
 
-(define-test get-parameters
-    (assert-equal (list 4807 19) (parameters "4807=19"))
-    (assert-equal (list 4807 811) (parameters  "4807=811")))
+(define-test split-parameters
+    (assert-equal (list 4807 19) (split-parameters "4807=19"))
+    (assert-equal (list 4807 811) (split-parameters  "4807=811")))
 
 (define-test equation
     (assert-equal (list 42 '= 42) (equation (list 42) 42))
     (assert-equal (list 42 '+ 17 '= 59) (equation (list 42 17) 59))
     (assert-equal (list 23 '+ 42 '+ 17 '= 82) (equation (list 23 42 17) 82)))
 
-(define-test print-equation
-    (assert-equal "23+42+17=82" (print-equation (list 23 42 17) 82)))
+(define-test format-equation
+    (assert-equal "23+42+17=82" (format-equation (list 23 42 17) 82)))
 
 (define-test solve-line
     (assert-equal "8+1+1+63+4+9+801+5058+0+8+2+2+9+6+8+6+7+3+3+9+4=6012"
